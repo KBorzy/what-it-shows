@@ -4,13 +4,15 @@ title: '#4471 hid two causes'
 owner: KBorzy
 status: open
 reviewed: 2026-10-31
-signature: KBorzy
+signature: v1.eyJzdWIiOiIxNTAwIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTM0NTI0ODMsImV4cCI6MTc5MzUzODg4M30.LXWbt0_W2_d1MJsrUW1RSho0pLHqUvi7nxAGNOT6p-Y
 ---
 
 <script>
   import CauseTable from '#lib/kb/CauseTable.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  export let signature;
 </script>
 
 Ticket **#4471** was marked known as one parser bug: the shared parser reads dates month
@@ -40,4 +42,4 @@ Not one issue. File one ticket per cause. Keep the counts from the table, not fr
 Five reports in desk-notes (`oneDayMove`) still classify as `parser` by tenant; they stay
 under that count, footnoted in the table.
 
-<RenderStamp signature="KBorzy" />
+<RenderStamp {signature} />
