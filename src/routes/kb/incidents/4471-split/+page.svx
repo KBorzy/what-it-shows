@@ -1,0 +1,43 @@
+---
+layout: runbook
+title: '#4471 hid two causes'
+owner: KBorzy
+status: open
+reviewed: 2026-10-31
+signature: KBorzy
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+Ticket **#4471** was marked known as one parser bug: the shared parser reads dates month
+first, day-first tenants get flipped dates. The 412 merged reports are not one cause.
+
+`causes.ts` splits them by tenant locale and booking form. Two causes share the ticket:
+
+- **`parser`** — day-first tenant, not the booking-v3 form hint path. **379** reports.
+- **`hint`** — day-first tenant on booking-v3, where the form prints `MM/DD/YYYY` and the
+  tenant still reads day first. **33** reports. Wrong home under #4471.
+
+<Callout kind="warn">
+Not one issue. File one ticket per cause. Keep the counts from the table, not from intake tags.
+</Callout>
+
+## What was merged into #4471
+
+<CauseTable ticket={4471} />
+
+## Filed from this page
+
+| cause | reports | own ticket |
+| --- | ---: | --- |
+| `parser` | 379 | yes — the #4471 line |
+| `hint` | 33 | yes — separate ticket; was “not this ticket — no ticket of its own” |
+
+Five reports in desk-notes (`oneDayMove`) still classify as `parser` by tenant; they stay
+under that count, footnoted in the table.
+
+<RenderStamp signature="KBorzy" />
